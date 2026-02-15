@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: fct_providers
+    description: "Faktitabel tervishoiuteenuse osutajate andmetega."
+    columns:
+      - name: location_id
+        description: "Unikaalne ID asukoha jaoks (MD5 räsi)."
+        tests:
+          - not_null  # Veerg ei tohi olla tühi
+          
+  - name: dim_year
+    columns:
+      - name: year_id
+        tests:
+          - unique    # Aasta peab olema unikaalne
+          - not_null

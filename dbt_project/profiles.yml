@@ -1,0 +1,7 @@
+tai_project:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'tai_data.duckdb'  # Viitab failile, mille dlt tekitas
+      schema: 'analytics'         # Kuhu mudelid salvestatakse
