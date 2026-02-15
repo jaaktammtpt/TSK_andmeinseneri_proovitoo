@@ -1,4 +1,5 @@
 import dlt
+import os
 import requests
 import pandas as pd
 from pyjstat import pyjstat
@@ -63,6 +64,7 @@ def run_pipeline() -> None:
     DB_FILE = "tai_data.duckdb"
     SCHEMA = "raw_data"
     TABLE_NAME = "tt_osutajad"
+    BASE_DIR = os.path.dirname(__file__)
 
     # 2. Initsialiseerime dlt pipeline'i.
     # See loob ühenduse DuckDB-ga ja valmistab ette skeemi.
@@ -70,8 +72,8 @@ def run_pipeline() -> None:
         pipeline_name=PIPELINE_NAME,
         destination=dlt.destinations.duckdb(DB_FILE),
         dataset_name=SCHEMA,
-        # Logimise seadistus (valikuline, kuid hea praktika)
-        progress="log"
+        progress="log",
+        pipelines_dir=BASE_DIR
     )
 
     # 3. Päri andmed (Eelnevalt defineeritud funktsioon)
